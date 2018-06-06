@@ -1,10 +1,23 @@
-var app = require('express')();
-var http = require('http').Server(app);
+const express = require('express');
+const app = express();
 
-app.get('/', function(req, res){
-  res.sendFile('index.html', { root: '.' })
-});
+app.get ('/', function(req, res){
+  res.sendFile(__dirname + '/index.html')
+  })
 
-http.listen(3001,function(){
-    console.log('listening on : 3001');
-});
+  app.get('/liste.js', function(req, res){
+   res.sendFile(__dirname + '/liste.js')
+  })
+
+   app.get('/liste', function(req, res){
+    res.sendFile(__dirname + '/data.json')
+
+  })
+
+
+
+
+
+  app.listen(3001, function() {
+   console.log('Listening on port 3001')
+  })
